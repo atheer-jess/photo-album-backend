@@ -1,0 +1,34 @@
+AWSTemplateFormatVersion: "2010-09-09"
+Transform: "AWS::Serverless-2016-10-31"
+Description: Backend Lambda
+
+Resources:
+  SearchPhotos:
+    Type: "AWS::Serverless::Function"
+    Properties:
+      FunctionName: search-photos-pipeline
+      Handler: lambda_function.lambda_handler
+      Runtime: python3.6
+      CodeUri: ./search-photos-copy
+      Description: "Search Photos"
+      MemorySize: 128
+      Timeout: 30
+      Role: "arn:aws:iam::487792509855:role/service-role/search-photos-role-4mzpz1gt"
+      Environment:
+        Variables:
+          REGION: us-east-1
+
+  IndexPhotos:
+    Type: "AWS::Serverless::Function"
+    Properties:
+      FunctionName: index-photos-pipeline
+      Handler: lambda_function.lambda_handler
+      Runtime: python3.6
+      CodeUri: ./index-photos-copy
+      Description: "Index Photos"
+      MemorySize: 128
+      Timeout: 30
+      Role: "arn:aws:iam::487792509855:role/service-role/s3-index-photos"
+      Environment:
+        Variables:
+          REGION: us-east-1
