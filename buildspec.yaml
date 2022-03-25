@@ -2,7 +2,7 @@ version: 0.1
 phases:
   install:
     commands:
-      - aws cloudformation package --template-file backend_pipeline.yaml --s3-bucket backend-pipeline --output-template-file output_backend_pipeline.yml
+      - aws cloudformation package --template-file backend_pipeline.yaml --s3-bucket atheer-jess-backend-pipeline --output-template-file output_backend_pipeline.yml
 artifacts:
   type: zip
   files:
