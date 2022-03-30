@@ -39,6 +39,7 @@ def lambda_handler(event, context):
     print("THIS IS RESPONSE: ", response)
     keywordOne = response['slots']['keywordOne']
     keywordTwo = response['slots']['keywordTwo']
+    print("Hello")
 
     keywords = [keywordOne]
     if keywordTwo is not None:
