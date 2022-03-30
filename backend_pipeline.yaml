@@ -20,6 +20,7 @@ Resources:
           
   SearchPhotosPipelineLogGroup:
     Type: AWS::Logs::LogGroup
+    DependsOn: SearchPhotos
     Properties:
       LogGroupName: !Join ['/', ['/aws/lambda', !Ref SearchPhotos]]
       RetentionInDays: 7
@@ -41,6 +42,7 @@ Resources:
   
   IndexPhotosPipelineLogGroup:
     Type: AWS::Logs::LogGroup
+    DependsOn: IndexPhotos
     Properties:
       LogGroupName: !Join ['/', ['/aws/lambda', !Ref IndexPhotos]]
       RetentionInDays: 7
