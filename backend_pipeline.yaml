@@ -19,10 +19,9 @@ Resources:
           REGION: us-east-1
           
   SearchPhotosPipelineLogGroup:
-    Type: "AWS::Logs::LogGroup"
-    LogGroupName: "search-photos-pipeline"
-    DependsOn: SearchPhotos
+    Type: AWS::Logs::LogGroup
     Properties:
+      LogGroupName: !Join ['/', ['/aws/lambda', !Ref SearchPhotos]]
       RetentionInDays: 7
 
   IndexPhotos:
@@ -40,9 +39,8 @@ Resources:
         Variables:
           REGION: us-east-1
   
-   IndexPhotosPipelineLogGroup:
-    Type: "AWS::Logs::LogGroup"
-    LogGroupName: "index-photos-pipeline"
-    DependsOn: IndexPhotos
+  IndexPhotosPipelineLogGroup:
+    Type: AWS::Logs::LogGroup
     Properties:
+      LogGroupName: !Join ['/', ['/aws/lambda', !Ref IndexPhotos]]
       RetentionInDays: 7
