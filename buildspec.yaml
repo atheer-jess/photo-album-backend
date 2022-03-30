@@ -4,7 +4,7 @@ phases:
     commands:
       - aws cloudformation package --template-file backend_pipeline.yaml --s3-bucket atheer-jess-backend-pipeline --output-template-file output_backend_pipeline.yml
 artifacts:
-  type: S3
+  type: zip
   files:
     - backend_pipeline.yaml
     - output_backend_pipeline.yml
